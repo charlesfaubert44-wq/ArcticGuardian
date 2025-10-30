@@ -1,0 +1,66 @@
+<svg width="512" height="512" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bgGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1E3A5F;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0D1B2A;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="starGlow" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#00FFA3;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#7ED7C1;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="512" height="512" rx="115" fill="url(#bgGrad1)"/>
+
+  <!-- Shield Outline -->
+  <path d="M256 80 L400 130 L400 280 Q400 380 256 460 Q112 380 112 280 L112 130 Z"
+        fill="none"
+        stroke="url(#starGlow)"
+        stroke-width="8"/>
+
+  <!-- Inner Shield Fill (subtle) -->
+  <path d="M256 95 L390 140 L390 280 Q390 370 256 445 Q122 370 122 280 L122 140 Z"
+        fill="#0D1B2A"
+        opacity="0.3"/>
+
+  <!-- North Star (Polaris) - Central -->
+  <g transform="translate(256, 220)">
+    <!-- Main star -->
+    <path d="M 0,-50 L -12,-15 L -48,-15 L -20,5 L -30,40 L 0,18 L 30,40 L 20,5 L 48,-15 L 12,-15 Z"
+          fill="url(#starGlow)"
+          stroke="#00FFA3"
+          stroke-width="2"/>
+
+    <!-- Inner star glow -->
+    <circle cx="0" cy="0" r="18" fill="#00FFA3" opacity="0.4"/>
+
+    <!-- Outer glow rings -->
+    <circle cx="0" cy="0" r="60" fill="none" stroke="#00FFA3" stroke-width="2" opacity="0.3"/>
+    <circle cx="0" cy="0" r="70" fill="none" stroke="#7ED7C1" stroke-width="1.5" opacity="0.2"/>
+  </g>
+
+  <!-- Compass Points (Cardinal Directions) -->
+  <!-- North -->
+  <text x="256" y="165"
+        font-family="'Inter', sans-serif"
+        font-size="32"
+        font-weight="800"
+        fill="#00FFA3"
+        text-anchor="middle">N</text>
+
+  <!-- South -->
+  <circle cx="256" cy="305" r="4" fill="#7ED7C1" opacity="0.7"/>
+
+  <!-- East -->
+  <circle cx="310" cy="220" r="4" fill="#7ED7C1" opacity="0.7"/>
+
+  <!-- West -->
+  <circle cx="202" cy="220" r="4" fill="#7ED7C1" opacity="0.7"/>
+
+  <!-- Subtle latitude/longitude lines -->
+  <line x1="170" y1="220" x2="342" y2="220"
+        stroke="#4A90A4" stroke-width="1.5" opacity="0.4"/>
+  <line x1="256" y1="165" x2="256" y2="275"
+        stroke="#4A90A4" stroke-width="1.5" opacity="0.4"/>
+</svg>

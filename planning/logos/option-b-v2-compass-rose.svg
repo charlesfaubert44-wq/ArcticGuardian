@@ -1,0 +1,138 @@
+<svg width="512" height="512" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bgGrad3" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1E3A5F;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0D1B2A;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="compassGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#00FFA3;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#7ED7C1;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="512" height="512" rx="115" fill="url(#bgGrad3)"/>
+
+  <!-- Shield Outline -->
+  <path d="M256 80 L400 130 L400 280 Q400 380 256 460 Q112 380 112 280 L112 130 Z"
+        fill="none"
+        stroke="url(#compassGrad)"
+        stroke-width="8"/>
+
+  <!-- Inner Shield -->
+  <path d="M256 95 L390 140 L390 280 Q390 370 256 445 Q122 370 122 280 L122 140 Z"
+        fill="#0D1B2A"
+        opacity="0.3"/>
+
+  <!-- Compass Rose -->
+  <g transform="translate(256, 240)">
+    <!-- Outer circle -->
+    <circle cx="0" cy="0" r="90"
+            fill="none"
+            stroke="#4A90A4"
+            stroke-width="3"
+            opacity="0.6"/>
+
+    <!-- Inner circles -->
+    <circle cx="0" cy="0" r="70"
+            fill="none"
+            stroke="#4A90A4"
+            stroke-width="2"
+            opacity="0.4"/>
+    <circle cx="0" cy="0" r="50"
+            fill="none"
+            stroke="#4A90A4"
+            stroke-width="1.5"
+            opacity="0.3"/>
+
+    <!-- North Point (Primary - Aurora gradient) -->
+    <path d="M 0,-90 L -15,-55 L 0,-65 L 15,-55 Z"
+          fill="url(#compassGrad)"
+          stroke="#00FFA3"
+          stroke-width="2"/>
+
+    <!-- South Point -->
+    <path d="M 0,90 L -12,58 L 0,68 L 12,58 Z"
+          fill="#1E3A5F"
+          stroke="#4A90A4"
+          stroke-width="1.5"/>
+
+    <!-- East Point -->
+    <path d="M 90,0 L 58,-12 L 68,0 L 58,12 Z"
+          fill="#1E3A5F"
+          stroke="#4A90A4"
+          stroke-width="1.5"/>
+
+    <!-- West Point -->
+    <path d="M -90,0 L -58,-12 L -68,0 L -58,12 Z"
+          fill="#1E3A5F"
+          stroke="#4A90A4"
+          stroke-width="1.5"/>
+
+    <!-- Northeast -->
+    <path d="M 64,-64 L 50,-50 L 58,-58 Z"
+          fill="#1E3A5F"
+          opacity="0.6"/>
+
+    <!-- Southeast -->
+    <path d="M 64,64 L 50,50 L 58,58 Z"
+          fill="#1E3A5F"
+          opacity="0.6"/>
+
+    <!-- Southwest -->
+    <path d="M -64,64 L -50,50 L -58,58 Z"
+          fill="#1E3A5F"
+          opacity="0.6"/>
+
+    <!-- Northwest -->
+    <path d="M -64,-64 L -50,-50 L -58,-58 Z"
+          fill="#1E3A5F"
+          opacity="0.6"/>
+
+    <!-- Center dot (safety beacon) -->
+    <circle cx="0" cy="0" r="12" fill="#00FFA3"/>
+    <circle cx="0" cy="0" r="8" fill="#0D1B2A"/>
+    <circle cx="0" cy="0" r="4" fill="#00FFA3"/>
+
+    <!-- Pulse rings -->
+    <circle cx="0" cy="0" r="20"
+            fill="none"
+            stroke="#00FFA3"
+            stroke-width="2"
+            opacity="0.5"/>
+    <circle cx="0" cy="0" r="28"
+            fill="none"
+            stroke="#7ED7C1"
+            stroke-width="1.5"
+            opacity="0.3"/>
+  </g>
+
+  <!-- Cardinal Direction Labels -->
+  <text x="256" y="175"
+        font-family="'Inter', sans-serif"
+        font-size="36"
+        font-weight="800"
+        fill="#00FFA3"
+        text-anchor="middle">N</text>
+
+  <text x="256" y="325"
+        font-family="'Inter', sans-serif"
+        font-size="24"
+        font-weight="600"
+        fill="#4A90A4"
+        text-anchor="middle">S</text>
+
+  <text x="335" y="248"
+        font-family="'Inter', sans-serif"
+        font-size="24"
+        font-weight="600"
+        fill="#4A90A4"
+        text-anchor="middle">E</text>
+
+  <text x="177" y="248"
+        font-family="'Inter', sans-serif"
+        font-size="24"
+        font-weight="600"
+        fill="#4A90A4"
+        text-anchor="middle">W</text>
+</svg>

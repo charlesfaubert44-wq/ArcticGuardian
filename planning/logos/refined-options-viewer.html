@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arctic Guardian - Refined Shield Designs</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --aurora-green: #00FFA3;
+            --aurora-teal: #7ED7C1;
+            --midnight-dark: #0D1B2A;
+            --midnight-blue: #1E3A5F;
+            --snow-white: #F8F9FA;
+            --off-white: #E8ECEF;
+            --slate-gray: #6C7A89;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #E8ECEF 0%, #F8F9FA 100%);
+            padding: 3rem 1.5rem;
+            color: var(--midnight-dark);
+        }
+
+        .container {
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        h1 {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 800;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--aurora-green), var(--aurora-teal));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .subtitle {
+            font-size: 1.25rem;
+            color: var(--slate-gray);
+            margin-bottom: 0.5rem;
+        }
+
+        .instruction {
+            font-size: 1rem;
+            color: var(--midnight-blue);
+            font-weight: 600;
+            margin-top: 1rem;
+        }
+
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .option-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            border: 3px solid transparent;
+        }
+
+        .option-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+            border-color: var(--aurora-green);
+        }
+
+        .logo-display {
+            height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #1E3A5F, #0D1B2A);
+            padding: 2rem;
+            position: relative;
+        }
+
+        .logo-display svg {
+            max-width: 100%;
+            max-height: 100%;
+            filter: drop-shadow(0 10px 30px rgba(0, 0, 0, 0.3));
+        }
+
+        .option-number {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: var(--aurora-green);
+            color: var(--midnight-dark);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 800;
+            box-shadow: 0 4px 15px rgba(0, 255, 163, 0.4);
+        }
+
+        .option-info {
+            padding: 2rem;
+        }
+
+        .option-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--midnight-dark);
+            margin-bottom: 1rem;
+        }
+
+        .option-desc {
+            color: var(--slate-gray);
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+
+        .features {
+            list-style: none;
+            margin-bottom: 1.5rem;
+        }
+
+        .features li {
+            padding: 0.5rem 0;
+            color: var(--midnight-blue);
+            font-weight: 500;
+        }
+
+        .features li:before {
+            content: "✓";
+            color: var(--aurora-green);
+            font-weight: bold;
+            display: inline-block;
+            width: 1.5em;
+            font-size: 1.2rem;
+        }
+
+        .best-for {
+            background: var(--off-white);
+            padding: 1rem;
+            border-radius: 10px;
+            border-left: 4px solid var(--aurora-green);
+        }
+
+        .best-for strong {
+            color: var(--midnight-dark);
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .best-for p {
+            color: var(--slate-gray);
+            font-size: 0.95rem;
+            margin: 0;
+        }
+
+        .size-comparison {
+            background: white;
+            border-radius: 20px;
+            padding: 3rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            margin-bottom: 3rem;
+        }
+
+        .size-comparison h2 {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            color: var(--midnight-dark);
+        }
+
+        .sizes {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 3rem;
+            justify-content: center;
+            align-items: flex-end;
+        }
+
+        .size-demo {
+            text-align: center;
+        }
+
+        .size-label {
+            margin-top: 1rem;
+            color: var(--slate-gray);
+            font-weight: 600;
+        }
+
+        .recommendation {
+            background: linear-gradient(135deg, var(--midnight-blue), var(--midnight-dark));
+            color: white;
+            padding: 3rem;
+            border-radius: 20px;
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .recommendation h2 {
+            color: var(--aurora-green);
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .recommendation p {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            max-width: 800px;
+            margin: 0 auto;
+            color: var(--off-white);
+        }
+
+        @media (max-width: 768px) {
+            .comparison-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .logo-display {
+                height: 350px;
+            }
+
+            body {
+                padding: 2rem 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Refined Shield Interior Designs</h1>
+            <p class="subtitle">Professional options representing Safety & North</p>
+            <p class="instruction">Click any option below to see it full size</p>
+        </header>
+
+        <div class="comparison-grid">
+            <!-- Option 1: North Star -->
+            <div class="option-card">
+                <div class="logo-display">
+                    <span class="option-number">1</span>
+                    <object data="option-b-v2-north-star.svg" type="image/svg+xml" width="280" height="280"></object>
+                </div>
+                <div class="option-info">
+                    <h3 class="option-title">Polaris North Star</h3>
+                    <p class="option-desc">
+                        Classic navigation symbol featuring the North Star (Polaris) with compass cardinal directions.
+                        The star represents finding your way home, while the prominent "N" emphasizes northern identity.
+                    </p>
+                    <ul class="features">
+                        <li>North Star symbolizes navigation & guidance</li>
+                        <li>Cardinal compass points (N/S/E/W)</li>
+                        <li>Glow rings suggest signal/beacon</li>
+                        <li>Clean, symmetrical, professional</li>
+                    </ul>
+                    <div class="best-for">
+                        <strong>Best For:</strong>
+                        <p>Traditional, timeless appeal. Perfect for those who want classic navigation symbolism with northern emphasis.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Option 2: GPS Beacon -->
+            <div class="option-card">
+                <div class="logo-display">
+                    <span class="option-number">2</span>
+                    <object data="option-b-v2-gps-beacon.svg" type="image/svg+xml" width="280" height="280"></object>
+                </div>
+                <div class="option-info">
+                    <h3 class="option-title">GPS Location Beacon</h3>
+                    <p class="option-desc">
+                        Modern GPS pin with emergency signal rings and aurora accent. Directly represents the app's
+                        core functionality: tracking location and sending emergency signals.
+                    </p>
+                    <ul class="features">
+                        <li>GPS pin = location tracking (safety)</li>
+                        <li>Signal rings = emergency beacon</li>
+                        <li>Aurora waves = northern lights (north)</li>
+                        <li>Modern, tech-forward aesthetic</li>
+                    </ul>
+                    <div class="best-for">
+                        <strong>Best For:</strong>
+                        <p>Tech-savvy users. Most literal representation of app features (GPS + emergency signal).</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Option 3: Compass Rose -->
+            <div class="option-card">
+                <div class="logo-display">
+                    <span class="option-number">3</span>
+                    <object data="option-b-v2-compass-rose.svg" type="image/svg+xml" width="280" height="280"></object>
+                </div>
+                <div class="option-info">
+                    <h3 class="option-title">Professional Compass Rose</h3>
+                    <p class="option-desc">
+                        Traditional compass rose with all 8 cardinal/intercardinal points. The aurora-gradient north
+                        arrow and central beacon combine navigation with safety monitoring.
+                    </p>
+                    <ul class="features">
+                        <li>Full 8-point compass rose</li>
+                        <li>Aurora-gradient north (emphasis)</li>
+                        <li>Central beacon pulse (safety)</li>
+                        <li>Most detailed, sophisticated option</li>
+                    </ul>
+                    <div class="best-for">
+                        <strong>Best For:</strong>
+                        <p>Serious outdoor professionals. Most comprehensive navigation symbolism with polished execution.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Option 4: Aurora North Arrow -->
+            <div class="option-card">
+                <div class="logo-display">
+                    <span class="option-number">4</span>
+                    <object data="option-b-v2-aurora-north.svg" type="image/svg+xml" width="280" height="280"></object>
+                </div>
+                <div class="option-info">
+                    <h3 class="option-title">Aurora Northern Lights</h3>
+                    <p class="option-desc">
+                        Stunning aurora borealis waves with bold north arrow. Most visually distinctive option,
+                        emphasizing northern Canadian identity with natural beauty.
+                    </p>
+                    <ul class="features">
+                        <li>Flowing aurora waves (northern lights)</li>
+                        <li>Bold directional arrow (north)</li>
+                        <li>Safety beacon at base (emergency)</li>
+                        <li>Most unique & memorable design</li>
+                    </ul>
+                    <div class="best-for">
+                        <strong>Best For:</strong>
+                        <p>Maximum northern identity and visual impact. Perfect for brand recognition and standing out.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Size Comparison -->
+        <div class="size-comparison">
+            <h2>Scalability Test - All Options Work at Any Size</h2>
+            <div class="sizes">
+                <div class="size-demo">
+                    <object data="option-b-v2-compass-rose.svg" type="image/svg+xml" width="64" height="64"></object>
+                    <div class="size-label">64px<br>(Mobile UI)</div>
+                </div>
+                <div class="size-demo">
+                    <object data="option-b-v2-compass-rose.svg" type="image/svg+xml" width="128" height="128"></object>
+                    <div class="size-label">128px<br>(Standard)</div>
+                </div>
+                <div class="size-demo">
+                    <object data="option-b-v2-compass-rose.svg" type="image/svg+xml" width="256" height="256"></object>
+                    <div class="size-label">256px<br>(Large)</div>
+                </div>
+                <div class="size-demo">
+                    <object data="option-b-v2-compass-rose.svg" type="image/svg+xml" width="384" height="384"></object>
+                    <div class="size-label">384px<br>(Hero)</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Recommendation -->
+        <div class="recommendation">
+            <h2>Designer Recommendations</h2>
+            <p style="margin-bottom: 2rem;">
+                All four options are professional, polished, and represent both safety and north effectively.
+                Your choice depends on your brand personality:
+            </p>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; text-align: left; margin-top: 2rem;">
+                <div>
+                    <h3 style="color: var(--aurora-green); margin-bottom: 0.5rem;">Option 1: North Star</h3>
+                    <p style="font-size: 0.95rem;">Choose if you want timeless, classic navigation symbolism</p>
+                </div>
+                <div>
+                    <h3 style="color: var(--aurora-green); margin-bottom: 0.5rem;">Option 2: GPS Beacon</h3>
+                    <p style="font-size: 0.95rem;">Choose if you want modern tech focus, literal app representation</p>
+                </div>
+                <div>
+                    <h3 style="color: var(--aurora-green); margin-bottom: 0.5rem;">Option 3: Compass Rose</h3>
+                    <p style="font-size: 0.95rem;">Choose if you want sophisticated, professional navigation detail</p>
+                </div>
+                <div>
+                    <h3 style="color: var(--aurora-green); margin-bottom: 0.5rem;">Option 4: Aurora</h3>
+                    <p style="font-size: 0.95rem;">Choose if you want maximum northern identity & visual impact</p>
+                </div>
+            </div>
+            <p style="margin-top: 2rem; font-size: 1.1rem; font-weight: 600; color: var(--aurora-green);">
+                Personal Favorite: Option 3 (Compass Rose) for professional outdoor use<br>
+                Most Unique: Option 4 (Aurora) for distinctive brand recognition
+            </p>
+        </div>
+
+        <footer style="text-align: center; padding-top: 2rem; border-top: 2px solid var(--off-white); color: var(--slate-gray);">
+            <p style="font-size: 0.95rem;">All logos use the shield shape you liked from Option B</p>
+            <p style="font-size: 0.85rem; margin-top: 1rem;">Interior redesigned to better represent Safety & North</p>
+        </footer>
+    </div>
+</body>
+</html>

@@ -1,0 +1,80 @@
+<svg width="512" height="512" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bgGrad2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1E3A5F;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0D1B2A;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="pinGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#00FFA3;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#7ED7C1;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="512" height="512" rx="115" fill="url(#bgGrad2)"/>
+
+  <!-- Shield Outline -->
+  <path d="M256 80 L400 130 L400 280 Q400 380 256 460 Q112 380 112 280 L112 130 Z"
+        fill="none"
+        stroke="url(#pinGrad)"
+        stroke-width="8"/>
+
+  <!-- Inner Shield -->
+  <path d="M256 95 L390 140 L390 280 Q390 370 256 445 Q122 370 122 280 L122 140 Z"
+        fill="#0D1B2A"
+        opacity="0.3"/>
+
+  <!-- GPS Location Pin (Modern) -->
+  <g transform="translate(256, 190)">
+    <!-- Pin shape -->
+    <path d="M 0,-60 Q -45,-60 -45,-20 Q -45,10 0,70 Q 45,10 45,-20 Q 45,-60 0,-60 Z"
+          fill="url(#pinGrad)"
+          stroke="#00FFA3"
+          stroke-width="3"/>
+
+    <!-- Inner circle -->
+    <circle cx="0" cy="-20" r="20" fill="#0D1B2A"/>
+    <circle cx="0" cy="-20" r="12" fill="#00FFA3"/>
+  </g>
+
+  <!-- Signal Rings (Emergency Beacon) -->
+  <circle cx="256" cy="170" r="80"
+          fill="none"
+          stroke="#00FFA3"
+          stroke-width="3"
+          opacity="0.6"/>
+  <circle cx="256" cy="170" r="100"
+          fill="none"
+          stroke="#7ED7C1"
+          stroke-width="2.5"
+          opacity="0.4"/>
+  <circle cx="256" cy="170" r="120"
+          fill="none"
+          stroke="#A8D8EA"
+          stroke-width="2"
+          opacity="0.3"/>
+
+  <!-- Aurora Accent (Northern Lights at top) -->
+  <path d="M 150 150 Q 180 140 210 145 Q 240 135 256 130 Q 272 135 300 145 Q 330 140 362 150"
+        stroke="url(#pinGrad)"
+        stroke-width="4"
+        fill="none"
+        opacity="0.7"
+        stroke-linecap="round"/>
+
+  <path d="M 160 165 Q 190 155 220 160 Q 245 150 256 145 Q 267 150 292 160 Q 322 155 352 165"
+        stroke="url(#pinGrad)"
+        stroke-width="3"
+        fill="none"
+        opacity="0.5"
+        stroke-linecap="round"/>
+
+  <!-- North indicator -->
+  <text x="256" y="350"
+        font-family="'Inter', sans-serif"
+        font-size="24"
+        font-weight="700"
+        fill="#7ED7C1"
+        text-anchor="middle"
+        opacity="0.6">NORTH</text>
+</svg>

@@ -1,0 +1,123 @@
+<svg width="512" height="512" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bgGrad4" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1E3A5F;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0D1B2A;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="auroraGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#00FFA3;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#7ED7C1;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#A8D8EA;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="auroraVert" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#00FFA3;stop-opacity:0.8" />
+      <stop offset="100%" style="stop-color:#00FFA3;stop-opacity:0" />
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="512" height="512" rx="115" fill="url(#bgGrad4)"/>
+
+  <!-- Shield Outline -->
+  <path d="M256 80 L400 130 L400 280 Q400 380 256 460 Q112 380 112 280 L112 130 Z"
+        fill="none"
+        stroke="url(#auroraGrad)"
+        stroke-width="8"/>
+
+  <!-- Inner Shield -->
+  <path d="M256 95 L390 140 L390 280 Q390 370 256 445 Q122 370 122 280 L122 140 Z"
+        fill="#0D1B2A"
+        opacity="0.3"/>
+
+  <!-- Aurora Borealis Waves (Northern Lights) -->
+  <g opacity="0.9">
+    <!-- Top wave (brightest) -->
+    <path d="M 140 180 Q 170 165 200 175 Q 230 165 256 160 Q 282 165 310 175 Q 340 165 372 180"
+          stroke="url(#auroraGrad)"
+          stroke-width="8"
+          fill="none"
+          stroke-linecap="round"/>
+
+    <!-- Second wave -->
+    <path d="M 145 200 Q 175 190 205 195 Q 235 185 256 180 Q 277 185 307 195 Q 337 190 367 200"
+          stroke="url(#auroraGrad)"
+          stroke-width="7"
+          fill="none"
+          opacity="0.8"
+          stroke-linecap="round"/>
+
+    <!-- Third wave -->
+    <path d="M 150 220 Q 180 210 210 215 Q 240 205 256 200 Q 272 205 302 215 Q 332 210 362 220"
+          stroke="url(#auroraGrad)"
+          stroke-width="6"
+          fill="none"
+          opacity="0.6"
+          stroke-linecap="round"/>
+
+    <!-- Fourth wave (subtle) -->
+    <path d="M 155 238 Q 185 228 215 233 Q 245 223 256 218 Q 267 223 297 233 Q 327 228 357 238"
+          stroke="url(#auroraGrad)"
+          stroke-width="5"
+          fill="none"
+          opacity="0.4"
+          stroke-linecap="round"/>
+  </g>
+
+  <!-- Vertical Aurora rays (subtle) -->
+  <g opacity="0.3">
+    <rect x="240" y="160" width="4" height="80" fill="url(#auroraVert)"/>
+    <rect x="268" y="160" width="4" height="80" fill="url(#auroraVert)"/>
+    <rect x="210" y="170" width="3" height="60" fill="url(#auroraVert)"/>
+    <rect x="298" y="170" width="3" height="60" fill="url(#auroraVert)"/>
+  </g>
+
+  <!-- North Arrow (Bold, Central) -->
+  <g transform="translate(256, 290)">
+    <!-- Arrow shaft -->
+    <rect x="-6" y="-40" width="12" height="80"
+          fill="#F8F9FA"
+          opacity="0.9"/>
+
+    <!-- Arrow head (pointing north/up) -->
+    <path d="M 0,-50 L -25,-25 L -10,-25 L -10,-40 L 10,-40 L 10,-25 L 25,-25 Z"
+          fill="url(#auroraGrad)"
+          stroke="#00FFA3"
+          stroke-width="2"/>
+
+    <!-- Arrow tail -->
+    <path d="M -15,40 L 0,50 L 15,40"
+          stroke="#F8F9FA"
+          stroke-width="3"
+          fill="none"
+          stroke-linecap="round"
+          opacity="0.7"/>
+  </g>
+
+  <!-- "N" for North -->
+  <text x="256" y="320"
+        font-family="'Inter', sans-serif"
+        font-size="48"
+        font-weight="800"
+        fill="#00FFA3"
+        text-anchor="middle">N</text>
+
+  <!-- Safety Beacon Dot (bottom) -->
+  <circle cx="256" cy="360" r="10" fill="#00FFA3"/>
+  <circle cx="256" cy="360" r="16"
+          fill="none"
+          stroke="#00FFA3"
+          stroke-width="2"
+          opacity="0.6"/>
+  <circle cx="256" cy="360" r="24"
+          fill="none"
+          stroke="#7ED7C1"
+          stroke-width="1.5"
+          opacity="0.4"/>
+
+  <!-- Coordinate lines (subtle grid) -->
+  <line x1="150" y1="260" x2="362" y2="260"
+        stroke="#4A90A4"
+        stroke-width="1"
+        opacity="0.3"
+        stroke-dasharray="5,5"/>
+</svg>

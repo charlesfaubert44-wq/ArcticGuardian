@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Trip - ArcticGuardian</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --aurora-green: #00D9A3;
+            --aurora-cyan: #00B8D4;
+            --aurora-purple: #9575CD;
+
+            --arctic-night: #0A1929;
+            --midnight-deep: #132F4C;
+            --frost-dark: #1E4976;
+
+            --snow-white: #FFFFFF;
+            --text-secondary: #B0BEC5;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--arctic-night);
+            color: var(--snow-white);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* Top Navigation */
+        .top-nav {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(19, 47, 76, 0.9);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 1.25rem 2rem;
+        }
+
+        .nav-wrapper {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-left {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .back-button {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            color: var(--aurora-cyan);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.2s ease;
+            padding: 0.625rem 1.25rem;
+            border-radius: 8px;
+            background: rgba(0, 184, 212, 0.1);
+            border: 1px solid rgba(0, 184, 212, 0.2);
+        }
+
+        .back-button:hover {
+            background: rgba(0, 184, 212, 0.2);
+        }
+
+        .form-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--snow-white);
+        }
+
+        .auto-save {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.625rem 1.25rem;
+            background: rgba(0, 217, 163, 0.1);
+            border-radius: 100px;
+            border: 1px solid rgba(0, 217, 163, 0.2);
+            color: var(--aurora-green);
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .auto-save-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--aurora-green);
+        }
+
+        /* Form Container */
+        .form-container {
+            max-width: 1000px;
+            margin: 4rem auto;
+            padding: 0 2rem 4rem;
+        }
+
+        /* Progress Steps */
+        .progress-wrapper {
+            margin-bottom: 4rem;
+        }
+
+        .progress-steps {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+            background: rgba(19, 47, 76, 0.5);
+            backdrop-filter: blur(12px);
+            padding: 2rem;
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .progress-line {
+            position: absolute;
+            top: 50%;
+            left: 12%;
+            right: 12%;
+            height: 3px;
+            background: rgba(19, 42, 74, 0.8);
+            transform: translateY(-50%);
+            border-radius: 2px;
+        }
+
+        .progress-line-active {
+            position: absolute;
+            top: 50%;
+            left: 12%;
+            height: 3px;
+            background: var(--aurora-green);
+            width: 16.66%;
+            transform: translateY(-50%);
+            border-radius: 2px;
+        }
+
+        .step {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .step-circle {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: rgba(19, 47, 76, 0.9);
+            border: 2px solid rgba(19, 42, 74, 0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: var(--text-secondary);
+            transition: all 0.3s ease;
+        }
+
+        .step.active .step-circle {
+            background: var(--aurora-green);
+            border-color: var(--aurora-green);
+            color: var(--arctic-night);
+        }
+
+        .step-label {
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        .step.active .step-label {
+            color: var(--aurora-green);
+        }
+
+        /* Form Card */
+        .form-card {
+            background: rgba(19, 47, 76, 0.5);
+            backdrop-filter: blur(12px);
+            padding: 3rem;
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .card-title {
+            font-size: 2rem;
+            font-weight: 900;
+            color: var(--snow-white);
+            margin-bottom: 1rem;
+            letter-spacing: -0.02em;
+        }
+
+        .card-subtitle {
+            font-size: 1.05rem;
+            color: var(--text-secondary);
+            margin-bottom: 2.5rem;
+            line-height: 1.6;
+        }
+
+        /* Form Section */
+        .form-section {
+            margin-bottom: 3rem;
+        }
+
+        .section-label {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--snow-white);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .section-icon {
+            font-size: 1.3rem;
+        }
+
+        /* Activity Type Grid */
+        .activity-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .activity-option {
+            background: rgba(0, 217, 163, 0.05);
+            border: 2px solid rgba(0, 217, 163, 0.2);
+            border-radius: 12px;
+            padding: 1.75rem;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .activity-option:hover {
+            transform: translateY(-4px);
+            border-color: rgba(0, 217, 163, 0.4);
+            background: rgba(0, 217, 163, 0.1);
+        }
+
+        .activity-option.selected {
+            background: rgba(0, 217, 163, 0.15);
+            border-color: var(--aurora-green);
+        }
+
+        .activity-icon {
+            font-size: 3rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .activity-name {
+            font-weight: 700;
+            font-size: 1rem;
+            color: var(--snow-white);
+        }
+
+        /* Form Input */
+        .form-group {
+            margin-bottom: 2rem;
+        }
+
+        .form-label {
+            display: block;
+            font-weight: 700;
+            font-size: 0.95rem;
+            color: var(--snow-white);
+            margin-bottom: 0.75rem;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 1rem 1.5rem;
+            background: rgba(19, 47, 76, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            color: var(--snow-white);
+            font-size: 1rem;
+            font-weight: 500;
+            transition: all 0.2s ease;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: var(--aurora-green);
+            background: rgba(19, 47, 76, 0.7);
+        }
+
+        .form-input::placeholder {
+            color: var(--text-secondary);
+        }
+
+        /* Date/Time Row */
+        .datetime-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        /* Number Input with Buttons */
+        .number-input-group {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .number-btn {
+            width: 50px;
+            height: 50px;
+            border-radius: 8px;
+            border: 1px solid rgba(0, 217, 163, 0.3);
+            background: rgba(0, 217, 163, 0.1);
+            color: var(--aurora-green);
+            font-size: 1.5rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .number-btn:hover {
+            background: var(--aurora-green);
+            color: var(--arctic-night);
+        }
+
+        .number-display {
+            flex: 1;
+            text-align: center;
+            font-size: 2rem;
+            font-weight: 900;
+            color: var(--snow-white);
+        }
+
+        /* Action Buttons */
+        .form-actions {
+            display: flex;
+            gap: 1.5rem;
+            margin-top: 3rem;
+        }
+
+        .btn {
+            flex: 1;
+            padding: 1.25rem 2.5rem;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 1rem;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--aurora-cyan);
+            border: 1px solid var(--aurora-cyan);
+        }
+
+        .btn-outline:hover {
+            background: rgba(0, 184, 212, 0.1);
+            border-color: var(--aurora-green);
+            color: var(--aurora-green);
+        }
+
+        .btn-primary {
+            background: var(--aurora-green);
+            color: var(--arctic-night);
+        }
+
+        .btn-primary:hover {
+            background: #00E5B0;
+            transform: translateY(-1px);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .form-container {
+                padding: 2rem 1.5rem;
+            }
+
+            .progress-steps {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+
+            .progress-line,
+            .progress-line-active {
+                display: none;
+            }
+
+            .activity-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .datetime-row {
+                grid-template-columns: 1fr;
+            }
+
+            .form-actions {
+                flex-direction: column;
+            }
+
+            .form-title {
+                font-size: 1.25rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Top Navigation -->
+    <nav class="top-nav">
+        <div class="nav-wrapper">
+            <div class="nav-left">
+                <a href="#" class="back-button">
+                    <span>←</span>
+                    <span>Back</span>
+                </a>
+                <h1 class="form-title">Plan Your Arctic Expedition</h1>
+            </div>
+            <div class="auto-save">
+                <div class="auto-save-dot"></div>
+                <span>Auto-Saved</span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Form Container -->
+    <div class="form-container">
+        <!-- Progress Steps -->
+        <div class="progress-wrapper">
+            <div class="progress-steps">
+                <div class="progress-line"></div>
+                <div class="progress-line-active"></div>
+
+                <div class="step active">
+                    <div class="step-circle">1</div>
+                    <div class="step-label">Basics</div>
+                </div>
+                <div class="step">
+                    <div class="step-circle">2</div>
+                    <div class="step-label">Route</div>
+                </div>
+                <div class="step">
+                    <div class="step-circle">3</div>
+                    <div class="step-label">Safety</div>
+                </div>
+                <div class="step">
+                    <div class="step-circle">4</div>
+                    <div class="step-label">Share</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Form Card -->
+        <div class="form-card">
+            <h2 class="card-title">Trip Essentials</h2>
+            <p class="card-subtitle">
+                Let's start with the basics. Tell us about your northern adventure so we can help keep you safe.
+            </p>
+
+            <!-- Trip Name -->
+            <div class="form-group">
+                <label class="form-label" for="trip-name">❄️ Trip Name</label>
+                <input
+                    type="text"
+                    id="trip-name"
+                    class="form-input"
+                    placeholder="Great Slave Lake Fishing Trip"
+                />
+            </div>
+
+            <!-- Activity Type -->
+            <div class="form-section">
+                <div class="section-label">
+                    <span class="section-icon">🏔️</span>
+                    <span>Select Activity Type</span>
+                </div>
+                <div class="activity-grid">
+                    <div class="activity-option" data-activity="fishing">
+                        <div class="activity-icon">🎣</div>
+                        <div class="activity-name">Fishing</div>
+                    </div>
+                    <div class="activity-option selected" data-activity="hiking">
+                        <div class="activity-icon">🥾</div>
+                        <div class="activity-name">Hiking</div>
+                    </div>
+                    <div class="activity-option" data-activity="camping">
+                        <div class="activity-icon">⛺</div>
+                        <div class="activity-name">Camping</div>
+                    </div>
+                    <div class="activity-option" data-activity="hunting">
+                        <div class="activity-icon">🦌</div>
+                        <div class="activity-name">Hunting</div>
+                    </div>
+                    <div class="activity-option" data-activity="snowmobile">
+                        <div class="activity-icon">🛷</div>
+                        <div class="activity-name">Snowmobile</div>
+                    </div>
+                    <div class="activity-option" data-activity="other">
+                        <div class="activity-icon">🧭</div>
+                        <div class="activity-name">Other</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Date and Time -->
+            <div class="form-section">
+                <div class="section-label">
+                    <span class="section-icon">📅</span>
+                    <span>When's Your Adventure?</span>
+                </div>
+                <div class="datetime-row">
+                    <div class="form-group">
+                        <label class="form-label" for="start-date">Start Date & Time</label>
+                        <input
+                            type="datetime-local"
+                            id="start-date"
+                            class="form-input"
+                            value="2025-11-05T10:00"
+                        />
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="end-date">End Date & Time</label>
+                        <input
+                            type="datetime-local"
+                            id="end-date"
+                            class="form-input"
+                            value="2025-11-05T18:00"
+                        />
+                    </div>
+                </div>
+            </div>
+
+            <!-- Group Size -->
+            <div class="form-section">
+                <div class="section-label">
+                    <span class="section-icon">👥</span>
+                    <span>Group Size</span>
+                </div>
+                <div class="number-input-group">
+                    <button class="number-btn" id="decrease-people">−</button>
+                    <div class="number-display" id="people-count">2</div>
+                    <button class="number-btn" id="increase-people">+</button>
+                </div>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="form-actions">
+                <button class="btn btn-outline">
+                    <span>Save as Draft</span>
+                </button>
+                <button class="btn btn-primary">
+                    <span>Continue to Route</span>
+                    <span>→</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Activity Selection
+        document.querySelectorAll('.activity-option').forEach(card => {
+            card.addEventListener('click', function() {
+                document.querySelectorAll('.activity-option').forEach(c => c.classList.remove('selected'));
+                this.classList.add('selected');
+            });
+        });
+
+        // Number Input Controls
+        let peopleCount = 2;
+
+        document.getElementById('decrease-people').addEventListener('click', () => {
+            if (peopleCount > 1) {
+                peopleCount--;
+                document.getElementById('people-count').textContent = peopleCount;
+            }
+        });
+
+        document.getElementById('increase-people').addEventListener('click', () => {
+            peopleCount++;
+            document.getElementById('people-count').textContent = peopleCount;
+        });
+    </script>
+</body>
+</html>

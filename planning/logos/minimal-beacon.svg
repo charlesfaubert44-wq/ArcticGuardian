@@ -1,0 +1,48 @@
+<svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="beaconGlow" x1="0%" y1="100%" x2="0%" y2="0%">
+      <stop offset="0%" style="stop-color:#00FFA3;stop-opacity:0"/>
+      <stop offset="100%" style="stop-color:#00FFA3;stop-opacity:1"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Left Mountain -->
+  <path d="M30 150 L60 80 L90 150 Z"
+        fill="#1E3A5F"/>
+
+  <!-- Center Mountain (with beacon) -->
+  <path d="M70 150 L100 40 L130 150 Z"
+        fill="#0D1B2A"/>
+
+  <!-- Right Mountain -->
+  <path d="M110 150 L140 90 L170 150 Z"
+        fill="#1E3A5F"/>
+
+  <!-- Beacon Signal -->
+  <line x1="100" y1="40" x2="100" y2="15"
+        stroke="#00FFA3"
+        stroke-width="3"
+        stroke-linecap="round"/>
+
+  <!-- Signal Waves -->
+  <circle cx="100" cy="20" r="6"
+          fill="none"
+          stroke="#00FFA3"
+          stroke-width="2"
+          opacity="0.8"/>
+  <circle cx="100" cy="20" r="12"
+          fill="none"
+          stroke="#00FFA3"
+          stroke-width="2"
+          opacity="0.5"/>
+  <circle cx="100" cy="20" r="18"
+          fill="none"
+          stroke="#00FFA3"
+          stroke-width="1"
+          opacity="0.3"/>
+
+  <!-- Beacon Glow -->
+  <path d="M100 40 L95 70 L105 70 Z"
+        fill="url(#beaconGlow)"
+        opacity="0.6"/>
+</svg>

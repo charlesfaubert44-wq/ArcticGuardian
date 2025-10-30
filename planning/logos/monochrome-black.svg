@@ -1,0 +1,24 @@
+<svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <!-- All Black Version for Single-Color Printing -->
+  <path d="M100 20 L160 40 L160 100 Q160 150 100 180 Q40 150 40 100 L40 40 Z"
+        fill="none"
+        stroke="#000000"
+        stroke-width="3"/>
+
+  <!-- Mountains -->
+  <path d="M60 120 L75 85 L90 105 L90 120 Z" fill="#000000"/>
+  <path d="M80 120 L100 60 L120 120 Z" fill="#000000"/>
+  <path d="M110 120 L125 95 L140 120 Z" fill="#000000"/>
+
+  <!-- Aurora Accent (simplified as solid) -->
+  <path d="M65 85 L80 78 L100 75 L120 78 L135 85"
+        stroke="#000000"
+        stroke-width="2"
+        fill="none"/>
+
+  <!-- Snow Caps -->
+  <path d="M100 60 L105 68 L95 68 Z" fill="#FFFFFF" stroke="#000000" stroke-width="1"/>
+
+  <!-- North Point -->
+  <circle cx="100" cy="45" r="3" fill="#000000"/>
+</svg>

@@ -1,0 +1,39 @@
+<svg width="512" height="512" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1E3A5F;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0D1B2A;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="auroraIcon" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#00FFA3;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#7ED7C1;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="512" height="512" rx="115" fill="url(#bgGradient)"/>
+
+  <!-- Shield -->
+  <path d="M256 80 L400 130 L400 280 Q400 380 256 460 Q112 380 112 280 L112 130 Z"
+        fill="#0D1B2A"
+        opacity="0.5"
+        stroke="url(#auroraIcon)"
+        stroke-width="6"/>
+
+  <!-- Mountains -->
+  <path d="M150 350 L200 240 L250 310 L256 300 L300 200 L350 280 L362 350 Z"
+        fill="#1E3A5F"/>
+
+  <!-- Aurora Glow -->
+  <path d="M150 260 L200 240 L256 230 L300 240 L362 260 L362 290 L150 290 Z"
+        fill="url(#auroraIcon)"
+        opacity="0.7"/>
+
+  <!-- Peak Highlights -->
+  <path d="M256 200 L266 220 L246 220 Z" fill="#00FFA3" opacity="0.9"/>
+  <path d="M200 240 L208 255 L192 255 Z" fill="#7ED7C1" opacity="0.8"/>
+
+  <!-- North Star -->
+  <circle cx="256" cy="150" r="8" fill="#00FFA3"/>
+  <circle cx="256" cy="150" r="12" fill="#00FFA3" opacity="0.3"/>
+</svg>

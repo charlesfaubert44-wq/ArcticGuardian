@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arctic Guardian - Logo Design Showcase</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --aurora-green: #00FFA3;
+            --aurora-teal: #7ED7C1;
+            --ice-blue: #A8D8EA;
+            --deep-blue: #4A90A4;
+            --midnight-dark: #0D1B2A;
+            --midnight-blue: #1E3A5F;
+            --slate-gray: #6C7A89;
+            --snow-white: #F8F9FA;
+            --off-white: #E8ECEF;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, var(--off-white) 0%, var(--snow-white) 100%);
+            color: var(--midnight-dark);
+            line-height: 1.6;
+            padding: 3rem 1.5rem;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        h1 {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 800;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--aurora-green), var(--aurora-teal));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .subtitle {
+            font-size: 1.25rem;
+            color: var(--slate-gray);
+            font-weight: 500;
+        }
+
+        .section {
+            background: white;
+            border-radius: 20px;
+            padding: 3rem;
+            margin-bottom: 3rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        .section-title {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--midnight-dark);
+        }
+
+        .section-desc {
+            color: var(--slate-gray);
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+        }
+
+        .logo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .logo-card {
+            border: 2px solid var(--off-white);
+            border-radius: 16px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .logo-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
+            border-color: var(--aurora-green);
+        }
+
+        .logo-display {
+            height: 280px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            background: var(--snow-white);
+        }
+
+        .logo-display.dark {
+            background: linear-gradient(135deg, var(--midnight-blue), var(--midnight-dark));
+        }
+
+        .logo-display.gradient {
+            background: linear-gradient(135deg, var(--aurora-green) 0%, var(--aurora-teal) 50%, var(--ice-blue) 100%);
+        }
+
+        .logo-display svg {
+            max-width: 100%;
+            max-height: 100%;
+        }
+
+        .logo-info {
+            padding: 1.5rem;
+            background: white;
+        }
+
+        .logo-name {
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            color: var(--midnight-dark);
+        }
+
+        .logo-desc {
+            font-size: 0.95rem;
+            color: var(--slate-gray);
+            margin-bottom: 1rem;
+        }
+
+        .logo-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .tag {
+            display: inline-block;
+            padding: 0.35rem 0.75rem;
+            background: var(--off-white);
+            color: var(--deep-blue);
+            font-size: 0.8rem;
+            font-weight: 600;
+            border-radius: 20px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .tag.primary {
+            background: linear-gradient(135deg, var(--aurora-green), var(--aurora-teal));
+            color: var(--midnight-dark);
+        }
+
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .size-example {
+            text-align: center;
+            padding: 2rem 1rem;
+            background: var(--snow-white);
+            border-radius: 12px;
+            border: 2px solid var(--off-white);
+        }
+
+        .size-label {
+            font-weight: 600;
+            color: var(--slate-gray);
+            margin-top: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .color-palette {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .color-swatch {
+            text-align: center;
+        }
+
+        .swatch-box {
+            width: 100%;
+            height: 100px;
+            border-radius: 12px;
+            margin-bottom: 0.75rem;
+            border: 2px solid var(--off-white);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .color-name {
+            font-weight: 700;
+            margin-bottom: 0.25rem;
+            font-size: 0.95rem;
+        }
+
+        .color-hex {
+            color: var(--slate-gray);
+            font-size: 0.85rem;
+            font-family: 'Monaco', 'Courier New', monospace;
+        }
+
+        .download-section {
+            background: linear-gradient(135deg, var(--midnight-blue), var(--midnight-dark));
+            color: white;
+            padding: 3rem;
+            border-radius: 20px;
+            text-align: center;
+        }
+
+        .download-section h2 {
+            color: var(--aurora-green);
+            margin-bottom: 1rem;
+        }
+
+        .download-section p {
+            color: var(--ice-blue);
+            margin-bottom: 2rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: linear-gradient(135deg, var(--aurora-green), var(--aurora-teal));
+            color: var(--midnight-dark);
+            font-weight: 700;
+            text-decoration: none;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 20px rgba(0, 255, 163, 0.3);
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(0, 255, 163, 0.4);
+        }
+
+        .usage-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .usage-card {
+            padding: 2rem;
+            background: var(--snow-white);
+            border-radius: 12px;
+            border-left: 4px solid var(--aurora-green);
+        }
+
+        .usage-card h3 {
+            color: var(--midnight-dark);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .usage-card ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .usage-card li {
+            padding: 0.5rem 0;
+            color: var(--slate-gray);
+        }
+
+        .usage-card li:before {
+            content: "✓";
+            color: var(--aurora-green);
+            font-weight: bold;
+            display: inline-block;
+            width: 1.5em;
+        }
+
+        .prohibit-card {
+            border-left-color: #DC2626;
+        }
+
+        .prohibit-card li:before {
+            content: "✗";
+            color: #DC2626;
+        }
+
+        @media (max-width: 768px) {
+            .usage-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .section {
+                padding: 2rem 1.5rem;
+            }
+
+            body {
+                padding: 2rem 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Arctic Guardian Logo Design</h1>
+            <p class="subtitle">Professional Brand Identity for Remote Wilderness Safety</p>
+        </header>
+
+        <!-- Primary Concepts -->
+        <section class="section">
+            <h2 class="section-title">Primary Logo Concepts</h2>
+            <p class="section-desc">Three distinct design approaches, each emphasizing different aspects of the Arctic Guardian brand.</p>
+
+            <div class="logo-grid">
+                <!-- Concept A -->
+                <div class="logo-card">
+                    <div class="logo-display">
+                        <svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                            <defs>
+                                <linearGradient id="auroraGradient1" x1="0%" y1="0%" x2="100%" y2="0%">
+                                    <stop offset="0%" style="stop-color:#00FFA3;stop-opacity:1" />
+                                    <stop offset="50%" style="stop-color:#7ED7C1;stop-opacity:1" />
+                                    <stop offset="100%" style="stop-color:#A8D8EA;stop-opacity:1" />
+                                </linearGradient>
+                                <linearGradient id="shieldGradient1" x1="0%" y1="0%" x2="0%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#4A90A4;stop-opacity:1" />
+                                    <stop offset="100%" style="stop-color:#1E3A5F;stop-opacity:1" />
+                                </linearGradient>
+                            </defs>
+                            <path d="M100 20 L160 40 L160 100 Q160 150 100 180 Q40 150 40 100 L40 40 Z"
+                                  fill="url(#shieldGradient1)" stroke="#0D1B2A" stroke-width="2"/>
+                            <path d="M60 120 L75 85 L90 105 L90 120 Z" fill="#0D1B2A" opacity="0.9"/>
+                            <path d="M80 120 L100 60 L120 120 Z" fill="#1E3A5F"/>
+                            <path d="M110 120 L125 95 L140 120 Z" fill="#0D1B2A" opacity="0.9"/>
+                            <path d="M60 85 L80 75 L100 70 L120 75 L140 85 L140 95 L60 95 Z"
+                                  fill="url(#auroraGradient1)" opacity="0.6"/>
+                            <path d="M100 60 L105 68 L95 68 Z" fill="#F8F9FA"/>
+                            <path d="M75 85 L78 90 L72 90 Z" fill="#F8F9FA"/>
+                            <path d="M125 95 L128 100 L122 100 Z" fill="#F8F9FA"/>
+                            <circle cx="100" cy="45" r="3" fill="#00FFA3" opacity="0.8"/>
+                        </svg>
+                    </div>
+                    <div class="logo-info">
+                        <div class="logo-name">Concept A: Guardian Shield Mountain</div>
+                        <div class="logo-desc">Classic shield design with mountain peaks and aurora accent. Emphasizes protection and northern landscape.</div>
+                        <div class="logo-tags">
+                            <span class="tag primary">Recommended</span>
+                            <span class="tag">Versatile</span>
+                            <span class="tag">App Icon</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Concept B - App Icon -->
+                <div class="logo-card">
+                    <div class="logo-display dark">
+                        <svg width="220" height="220" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+                            <defs>
+                                <linearGradient id="auroraIcon2" x1="0%" y1="0%" x2="100%" y2="0%">
+                                    <stop offset="0%" style="stop-color:#00FFA3;stop-opacity:1" />
+                                    <stop offset="100%" style="stop-color:#7ED7C1;stop-opacity:1" />
+                                </linearGradient>
+                            </defs>
+                            <path d="M256 80 L400 130 L400 280 Q400 380 256 460 Q112 380 112 280 L112 130 Z"
+                                  fill="#0D1B2A" opacity="0.5" stroke="url(#auroraIcon2)" stroke-width="6"/>
+                            <path d="M150 350 L200 240 L250 310 L256 300 L300 200 L350 280 L362 350 Z"
+                                  fill="#1E3A5F"/>
+                            <path d="M150 260 L200 240 L256 230 L300 240 L362 260 L362 290 L150 290 Z"
+                                  fill="url(#auroraIcon2)" opacity="0.7"/>
+                            <path d="M256 200 L266 220 L246 220 Z" fill="#00FFA3" opacity="0.9"/>
+                            <circle cx="256" cy="150" r="8" fill="#00FFA3"/>
+                        </svg>
+                    </div>
+                    <div class="logo-info">
+                        <div class="logo-name">Concept B: App Icon Version</div>
+                        <div class="logo-desc">Optimized for square app icons with background. Features north star navigation element.</div>
+                        <div class="logo-tags">
+                            <span class="tag">Mobile</span>
+                            <span class="tag">iOS/Android</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Concept C - Minimal Beacon -->
+                <div class="logo-card">
+                    <div class="logo-display">
+                        <svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                            <defs>
+                                <linearGradient id="beaconGlow3" x1="0%" y1="100%" x2="0%" y2="0%">
+                                    <stop offset="0%" style="stop-color:#00FFA3;stop-opacity:0"/>
+                                    <stop offset="100%" style="stop-color:#00FFA3;stop-opacity:1"/>
+                                </linearGradient>
+                            </defs>
+                            <path d="M30 150 L60 80 L90 150 Z" fill="#1E3A5F"/>
+                            <path d="M70 150 L100 40 L130 150 Z" fill="#0D1B2A"/>
+                            <path d="M110 150 L140 90 L170 150 Z" fill="#1E3A5F"/>
+                            <line x1="100" y1="40" x2="100" y2="15" stroke="#00FFA3" stroke-width="3" stroke-linecap="round"/>
+                            <circle cx="100" cy="20" r="6" fill="none" stroke="#00FFA3" stroke-width="2" opacity="0.8"/>
+                            <circle cx="100" cy="20" r="12" fill="none" stroke="#00FFA3" stroke-width="2" opacity="0.5"/>
+                            <circle cx="100" cy="20" r="18" fill="none" stroke="#00FFA3" stroke-width="1" opacity="0.3"/>
+                        </svg>
+                    </div>
+                    <div class="logo-info">
+                        <div class="logo-name">Concept C: Mountain Beacon</div>
+                        <div class="logo-desc">Minimalist approach with emergency signal beacon. Modern and clean for tech-forward branding.</div>
+                        <div class="logo-tags">
+                            <span class="tag">Minimalist</span>
+                            <span class="tag">Modern</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Horizontal Lockup -->
+        <section class="section">
+            <h2 class="section-title">Horizontal Logo with Typography</h2>
+            <p class="section-desc">Primary lockup for website headers, marketing materials, and official documents.</p>
+
+            <div style="background: white; padding: 3rem; border-radius: 12px; border: 2px solid var(--off-white);">
+                <svg width="100%" height="150" viewBox="0 0 600 150" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
+                    <defs>
+                        <linearGradient id="textGradientMain" x1="0%" y1="0%" x2="100%" y2="0%">
+                            <stop offset="0%" style="stop-color:#00FFA3"/>
+                            <stop offset="100%" style="stop-color:#7ED7C1"/>
+                        </linearGradient>
+                    </defs>
+                    <path d="M75 30 L110 40 L110 80 Q110 105 75 120 Q40 105 40 80 L40 40 Z"
+                          fill="#1E3A5F" stroke="#00FFA3" stroke-width="2"/>
+                    <path d="M55 95 L65 70 L75 85 L85 65 L95 95 Z" fill="#0D1B2A"/>
+                    <path d="M55 75 L75 70 L95 75 L95 82 L55 82 Z" fill="url(#textGradientMain)" opacity="0.6"/>
+                    <text x="130" y="75" font-family="'Inter', sans-serif" font-size="48" font-weight="800" fill="#0D1B2A" letter-spacing="-1">ARCTIC</text>
+                    <text x="130" y="110" font-family="'Inter', sans-serif" font-size="48" font-weight="800" fill="url(#textGradientMain)" letter-spacing="-1">GUARDIAN</text>
+                    <text x="132" y="130" font-family="'Inter', sans-serif" font-size="14" font-weight="500" fill="#6C7A89" letter-spacing="2">SAFETY FOR REMOTE ADVENTURES</text>
+                </svg>
+            </div>
+        </section>
+
+        <!-- Size Comparisons -->
+        <section class="section">
+            <h2 class="section-title">Size & Scale Testing</h2>
+            <p class="section-desc">Logo remains recognizable and legible at various sizes from favicon to large format.</p>
+
+            <div class="comparison-grid">
+                <div class="size-example">
+                    <svg width="32" height="32" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M100 20 L160 40 L160 100 Q160 150 100 180 Q40 150 40 100 L40 40 Z" fill="#1E3A5F" stroke="#00FFA3" stroke-width="4"/>
+                        <path d="M80 120 L100 60 L120 120 Z" fill="#00FFA3"/>
+                    </svg>
+                    <div class="size-label">32px (Favicon)</div>
+                </div>
+
+                <div class="size-example">
+                    <svg width="64" height="64" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <linearGradient id="grad64" x1="0%" y1="0%" x2="0%" y2="100%">
+                                <stop offset="0%" style="stop-color:#4A90A4"/>
+                                <stop offset="100%" style="stop-color:#1E3A5F"/>
+                            </linearGradient>
+                        </defs>
+                        <path d="M100 20 L160 40 L160 100 Q160 150 100 180 Q40 150 40 100 L40 40 Z" fill="url(#grad64)" stroke="#0D1B2A" stroke-width="2"/>
+                        <path d="M80 120 L100 60 L120 120 Z" fill="#1E3A5F"/>
+                        <path d="M80 80 L100 75 L120 80 L120 90 L80 90 Z" fill="#00FFA3" opacity="0.6"/>
+                    </svg>
+                    <div class="size-label">64px (Small UI)</div>
+                </div>
+
+                <div class="size-example">
+                    <svg width="128" height="128" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <linearGradient id="aurora128" x1="0%" y1="0%" x2="100%" y2="0%">
+                                <stop offset="0%" style="stop-color:#00FFA3"/>
+                                <stop offset="50%" style="stop-color:#7ED7C1"/>
+                                <stop offset="100%" style="stop-color:#A8D8EA"/>
+                            </linearGradient>
+                            <linearGradient id="shield128" x1="0%" y1="0%" x2="0%" y2="100%">
+                                <stop offset="0%" style="stop-color:#4A90A4"/>
+                                <stop offset="100%" style="stop-color:#1E3A5F"/>
+                            </linearGradient>
+                        </defs>
+                        <path d="M100 20 L160 40 L160 100 Q160 150 100 180 Q40 150 40 100 L40 40 Z"
+                              fill="url(#shield128)" stroke="#0D1B2A" stroke-width="2"/>
+                        <path d="M60 120 L75 85 L90 105 L90 120 Z" fill="#0D1B2A" opacity="0.9"/>
+                        <path d="M80 120 L100 60 L120 120 Z" fill="#1E3A5F"/>
+                        <path d="M110 120 L125 95 L140 120 Z" fill="#0D1B2A" opacity="0.9"/>
+                        <path d="M60 85 L80 75 L100 70 L120 75 L140 85 L140 95 L60 95 Z"
+                              fill="url(#aurora128)" opacity="0.6"/>
+                        <path d="M100 60 L105 68 L95 68 Z" fill="#F8F9FA"/>
+                    </svg>
+                    <div class="size-label">128px (Standard)</div>
+                </div>
+
+                <div class="size-example">
+                    <svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <linearGradient id="aurora200" x1="0%" y1="0%" x2="100%" y2="0%">
+                                <stop offset="0%" style="stop-color:#00FFA3"/>
+                                <stop offset="50%" style="stop-color:#7ED7C1"/>
+                                <stop offset="100%" style="stop-color:#A8D8EA"/>
+                            </linearGradient>
+                            <linearGradient id="shield200" x1="0%" y1="0%" x2="0%" y2="100%">
+                                <stop offset="0%" style="stop-color:#4A90A4"/>
+                                <stop offset="100%" style="stop-color:#1E3A5F"/>
+                            </linearGradient>
+                        </defs>
+                        <path d="M100 20 L160 40 L160 100 Q160 150 100 180 Q40 150 40 100 L40 40 Z"
+                              fill="url(#shield200)" stroke="#0D1B2A" stroke-width="2"/>
+                        <path d="M60 120 L75 85 L90 105 L90 120 Z" fill="#0D1B2A" opacity="0.9"/>
+                        <path d="M80 120 L100 60 L120 120 Z" fill="#1E3A5F"/>
+                        <path d="M110 120 L125 95 L140 120 Z" fill="#0D1B2A" opacity="0.9"/>
+                        <path d="M60 85 L80 75 L100 70 L120 75 L140 85 L140 95 L60 95 Z"
+                              fill="url(#aurora200)" opacity="0.6"/>
+                        <path d="M100 60 L105 68 L95 68 Z" fill="#F8F9FA"/>
+                        <path d="M75 85 L78 90 L72 90 Z" fill="#F8F9FA"/>
+                        <path d="M125 95 L128 100 L122 100 Z" fill="#F8F9FA"/>
+                        <circle cx="100" cy="45" r="3" fill="#00FFA3" opacity="0.8"/>
+                    </svg>
+                    <div class="size-label">200px (Large Display)</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Color Palette -->
+        <section class="section">
+            <h2 class="section-title">Brand Color Palette</h2>
+            <p class="section-desc">Aurora-inspired colors reflecting Canada's northern lights and landscapes.</p>
+
+            <div class="color-palette">
+                <div class="color-swatch">
+                    <div class="swatch-box" style="background: #00FFA3;"></div>
+                    <div class="color-name">Aurora Green</div>
+                    <div class="color-hex">#00FFA3</div>
+                </div>
+
+                <div class="color-swatch">
+                    <div class="swatch-box" style="background: #7ED7C1;"></div>
+                    <div class="color-name">Aurora Teal</div>
+                    <div class="color-hex">#7ED7C1</div>
+                </div>
+
+                <div class="color-swatch">
+                    <div class="swatch-box" style="background: #A8D8EA;"></div>
+                    <div class="color-name">Ice Blue</div>
+                    <div class="color-hex">#A8D8EA</div>
+                </div>
+
+                <div class="color-swatch">
+                    <div class="swatch-box" style="background: #4A90A4;"></div>
+                    <div class="color-name">Deep Blue</div>
+                    <div class="color-hex">#4A90A4</div>
+                </div>
+
+                <div class="color-swatch">
+                    <div class="swatch-box" style="background: #1E3A5F;"></div>
+                    <div class="color-name">Midnight Blue</div>
+                    <div class="color-hex">#1E3A5F</div>
+                </div>
+
+                <div class="color-swatch">
+                    <div class="swatch-box" style="background: #0D1B2A;"></div>
+                    <div class="color-name">Midnight Dark</div>
+                    <div class="color-hex">#0D1B2A</div>
+                </div>
+
+                <div class="color-swatch">
+                    <div class="swatch-box" style="background: #F8F9FA; border: 2px solid #E8ECEF;"></div>
+                    <div class="color-name">Snow White</div>
+                    <div class="color-hex">#F8F9FA</div>
+                </div>
+
+                <div class="color-swatch">
+                    <div class="swatch-box" style="background: #6C7A89;"></div>
+                    <div class="color-name">Slate Gray</div>
+                    <div class="color-hex">#6C7A89</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Usage Guidelines -->
+        <section class="section">
+            <h2 class="section-title">Usage Guidelines</h2>
+            <p class="section-desc">Best practices for implementing the Arctic Guardian logo across all media.</p>
+
+            <div class="usage-grid">
+                <div class="usage-card">
+                    <h3>Do ✓</h3>
+                    <ul>
+                        <li>Use approved logo files only</li>
+                        <li>Maintain minimum clear space</li>
+                        <li>Use on solid, clean backgrounds</li>
+                        <li>Scale proportionally</li>
+                        <li>Use approved color variations</li>
+                        <li>Ensure proper contrast</li>
+                        <li>Follow minimum size guidelines</li>
+                    </ul>
+                </div>
+
+                <div class="usage-card prohibit-card">
+                    <h3>Don't ✗</h3>
+                    <ul>
+                        <li>Rotate or tilt the logo</li>
+                        <li>Stretch or distort proportions</li>
+                        <li>Change colors arbitrarily</li>
+                        <li>Add effects (shadows, glows)</li>
+                        <li>Place on busy backgrounds</li>
+                        <li>Recreate or modify elements</li>
+                        <li>Use below minimum size</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Download Section -->
+        <section class="download-section">
+            <h2>Ready to Use Arctic Guardian Branding</h2>
+            <p>All logo files are available in the /planning/logos/ directory in SVG format.</p>
+            <p style="margin-top: 1.5rem; font-size: 0.95rem;">
+                <strong>Available Files:</strong><br>
+                primary-shield-mountain.svg • app-icon-square.svg • horizontal-full.svg • minimal-beacon.svg
+            </p>
+            <p style="margin-top: 1rem; font-size: 0.9rem; opacity: 0.8;">
+                For additional formats (PNG, AI, EPS) or custom variations, contact the design team.
+            </p>
+        </section>
+
+        <footer style="text-align: center; margin-top: 4rem; padding-top: 2rem; border-top: 2px solid var(--off-white); color: var(--slate-gray);">
+            <p style="margin-bottom: 0.5rem;"><strong>Arctic Guardian Logo Design System</strong></p>
+            <p style="font-size: 0.9rem;">Version 1.0 • October 30, 2025 • Professional Brand Identity</p>
+            <p style="font-size: 0.85rem; margin-top: 1rem;">"Get everyone home safe at the end of their trip."</p>
+        </footer>
+    </div>
+</body>
+</html>

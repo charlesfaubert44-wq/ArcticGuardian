@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NorthernGuardian - Plan Your Northern Adventure Safely</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            /* Northern Color Palette */
+            --aurora-green: #00FFA3;
+            --aurora-teal: #7ED7C1;
+            --ice-blue: #A8D8EA;
+            --deep-blue: #4A90A4;
+            --midnight-dark: #0D1B2A;
+            --midnight-blue: #1E3A5F;
+            --slate-gray: #6C7A89;
+            --snow-white: #F8F9FA;
+            --off-white: #E8ECEF;
+            --earth-orange: #D4745F;
+            --warm-brown: #8B6F47;
+            --forest-green: #2D5016;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--midnight-dark);
+            line-height: 1.6;
+            background: var(--snow-white);
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(13, 27, 42, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 0;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--snow-white);
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            font-size: 2rem;
+            filter: drop-shadow(0 0 10px var(--aurora-green));
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            align-items: center;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--off-white);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            font-size: 0.95rem;
+        }
+
+        .nav-links a:hover {
+            color: var(--aurora-green);
+        }
+
+        .btn {
+            padding: 0.75rem 1.75rem;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-block;
+            cursor: pointer;
+            border: none;
+            font-size: 1rem;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--aurora-green), var(--aurora-teal));
+            color: var(--midnight-dark);
+            box-shadow: 0 4px 20px rgba(0, 255, 163, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 30px rgba(0, 255, 163, 0.4);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--snow-white);
+            border: 2px solid var(--snow-white);
+        }
+
+        .btn-outline:hover {
+            background: var(--snow-white);
+            color: var(--midnight-dark);
+        }
+
+        /* Hero Section */
+        .hero {
+            margin-top: 80px;
+            position: relative;
+            height: 90vh;
+            min-height: 600px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            background: linear-gradient(135deg,
+                var(--midnight-dark) 0%,
+                var(--midnight-blue) 50%,
+                var(--deep-blue) 100%);
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background:
+                radial-gradient(ellipse at 20% 50%, rgba(0, 255, 163, 0.15) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 70%, rgba(126, 215, 193, 0.1) 0%, transparent 50%);
+            animation: aurora 20s ease-in-out infinite;
+        }
+
+        @keyframes aurora {
+            0%, 100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+            50% {
+                opacity: 0.8;
+                transform: translateY(-20px);
+            }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            text-align: center;
+        }
+
+        .hero-title {
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-weight: 800;
+            color: var(--snow-white);
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+        }
+
+        .hero-title .highlight {
+            background: linear-gradient(135deg, var(--aurora-green), var(--aurora-teal));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1.1rem, 2vw, 1.5rem);
+            color: var(--ice-blue);
+            margin-bottom: 3rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            font-weight: 400;
+        }
+
+        .hero-cta {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .hero-cta .btn {
+            font-size: 1.1rem;
+            padding: 1rem 2.5rem;
+        }
+
+        .hero-stats {
+            margin-top: 5rem;
+            display: flex;
+            gap: 3rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--aurora-green);
+            display: block;
+        }
+
+        .stat-label {
+            color: var(--ice-blue);
+            font-size: 0.95rem;
+            margin-top: 0.5rem;
+        }
+
+        /* Features Section */
+        .features {
+            padding: 8rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 5rem;
+        }
+
+        .section-title {
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 800;
+            color: var(--midnight-dark);
+            margin-bottom: 1rem;
+        }
+
+        .section-subtitle {
+            font-size: 1.25rem;
+            color: var(--slate-gray);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 3rem;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+            transition: all 0.4s ease;
+            border: 1px solid var(--off-white);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.12);
+        }
+
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--aurora-green), var(--aurora-teal));
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 30px rgba(0, 255, 163, 0.2);
+        }
+
+        .feature-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--midnight-dark);
+            margin-bottom: 1rem;
+        }
+
+        .feature-description {
+            color: var(--slate-gray);
+            line-height: 1.7;
+            font-size: 1.05rem;
+        }
+
+        /* How It Works */
+        .how-it-works {
+            padding: 8rem 2rem;
+            background: linear-gradient(135deg, var(--midnight-dark), var(--midnight-blue));
+            position: relative;
+            overflow: hidden;
+        }
+
+        .how-it-works::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background:
+                radial-gradient(ellipse at 30% 50%, rgba(0, 255, 163, 0.1) 0%, transparent 50%);
+            opacity: 0.5;
+        }
+
+        .steps-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 10;
+        }
+
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 4rem;
+            margin-top: 4rem;
+        }
+
+        .step {
+            text-align: center;
+            position: relative;
+        }
+
+        .step-number {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--aurora-green), var(--aurora-teal));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--midnight-dark);
+            margin: 0 auto 2rem;
+            box-shadow: 0 10px 40px rgba(0, 255, 163, 0.3);
+        }
+
+        .step-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--snow-white);
+            margin-bottom: 1rem;
+        }
+
+        .step-description {
+            color: var(--ice-blue);
+            line-height: 1.7;
+            font-size: 1.05rem;
+        }
+
+        /* Land Acknowledgment */
+        .land-acknowledgment {
+            padding: 6rem 2rem;
+            background: var(--off-white);
+        }
+
+        .acknowledgment-content {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+            padding: 3rem;
+            background: white;
+            border-radius: 20px;
+            border-left: 5px solid var(--warm-brown);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.06);
+        }
+
+        .acknowledgment-title {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--midnight-dark);
+            margin-bottom: 1.5rem;
+        }
+
+        .acknowledgment-text {
+            color: var(--slate-gray);
+            line-height: 1.8;
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+        }
+
+        .acknowledgment-link {
+            color: var(--deep-blue);
+            font-weight: 600;
+            text-decoration: none;
+            border-bottom: 2px solid var(--aurora-teal);
+            transition: all 0.3s ease;
+        }
+
+        .acknowledgment-link:hover {
+            color: var(--aurora-teal);
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 8rem 2rem;
+            background: linear-gradient(135deg, var(--deep-blue), var(--midnight-blue));
+            text-align: center;
+        }
+
+        .cta-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .cta-title {
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 800;
+            color: var(--snow-white);
+            margin-bottom: 1.5rem;
+        }
+
+        .cta-subtitle {
+            font-size: 1.25rem;
+            color: var(--ice-blue);
+            margin-bottom: 3rem;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--midnight-dark);
+            color: var(--ice-blue);
+            padding: 4rem 2rem 2rem;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-section h3 {
+            color: var(--snow-white);
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-links a {
+            color: var(--ice-blue);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--aurora-green);
+        }
+
+        .footer-bottom {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding-top: 2rem;
+            border-top: 1px solid var(--midnight-blue);
+            text-align: center;
+            color: var(--slate-gray);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero {
+                height: auto;
+                min-height: 80vh;
+                padding: 4rem 0;
+            }
+
+            .hero-stats {
+                gap: 2rem;
+            }
+
+            .features,
+            .how-it-works,
+            .cta-section {
+                padding: 4rem 1.5rem;
+            }
+
+            .features-grid,
+            .steps-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .hero-cta {
+                flex-direction: column;
+            }
+
+            .hero-cta .btn {
+                width: 100%;
+                max-width: 300px;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in-up {
+            animation: fadeInUp 0.8s ease-out;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <span class="logo-icon">🏔️</span>
+                <span>NorthernGuardian</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="#features">Features</a></li>
+                <li><a href="#how-it-works">How It Works</a></li>
+                <li><a href="#community">Community</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#" class="btn btn-outline">Login</a></li>
+                <li><a href="#" class="btn btn-primary">Sign Up Free</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content fade-in-up">
+            <h1 class="hero-title">
+                Plan Your Northern Adventure <span class="highlight">Safely</span>
+            </h1>
+            <p class="hero-subtitle">
+                Create comprehensive trip plans that keep you safe and give your loved ones peace of mind in Canada's remote northern territories
+            </p>
+            <div class="hero-cta">
+                <a href="#" class="btn btn-primary">Get Started Free →</a>
+                <a href="#how-it-works" class="btn btn-outline">See How It Works</a>
+            </div>
+            <div class="hero-stats">
+                <div class="stat">
+                    <span class="stat-number">100%</span>
+                    <span class="stat-label">Free for Individuals</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">2 mins</span>
+                    <span class="stat-label">Average Setup Time</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">24/7</span>
+                    <span class="stat-label">Safety Monitoring</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <div class="section-header">
+            <h2 class="section-title">Built for the North</h2>
+            <p class="section-subtitle">
+                Everything you need to plan safe outdoor adventures in Canada's northern territories
+            </p>
+        </div>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">🗺️</div>
+                <h3 class="feature-title">Interactive Trip Plans</h3>
+                <p class="feature-description">
+                    Draw routes on beautiful maps, add waypoints, and track your exact path. Export to GPX for offline GPS devices. Works offline when you need it most.
+                </p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🔔</div>
+                <h3 class="feature-title">Automatic Safety Alerts</h3>
+                <p class="feature-description">
+                    Check-in reminders ensure you're safe. If you don't return on time, emergency contacts are automatically notified with your trip details and location.
+                </p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🏔️</div>
+                <h3 class="feature-title">Northern Heritage</h3>
+                <p class="feature-description">
+                    Built by northerners, for northerners. Respects indigenous territories, reflects authentic northern life, and understands the unique challenges of remote travel.
+                </p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">📱</div>
+                <h3 class="feature-title">Share with Anyone</h3>
+                <p class="feature-description">
+                    Send trip plans to family and friends via email or shareable link. They can view your route, expected return time, and contact info—no account needed.
+                </p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">⚡</div>
+                <h3 class="feature-title">Quick & Easy</h3>
+                <p class="feature-description">
+                    Create a complete trip plan in under 5 minutes. Smart defaults, auto-save, and intuitive design mean less time planning, more time adventuring.
+                </p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🛡️</div>
+                <h3 class="feature-title">Privacy First</h3>
+                <p class="feature-description">
+                    Your data is yours. Control who sees your trips. No ads, no tracking, no selling your information. Free for individuals, always.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="how-it-works" id="how-it-works">
+        <div class="steps-container">
+            <div class="section-header">
+                <h2 class="section-title" style="color: var(--snow-white);">How It Works</h2>
+                <p class="section-subtitle" style="color: var(--ice-blue);">
+                    Three simple steps to safer outdoor adventures
+                </p>
+            </div>
+            <div class="steps-grid">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3 class="step-title">Create Your Trip</h3>
+                    <p class="step-description">
+                        Add your route on an interactive map, set dates, list your gear, and add emergency contacts. Takes less than 5 minutes.
+                    </p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3 class="step-title">Share Your Plan</h3>
+                    <p class="step-description">
+                        Send trip details to family and friends via email or shareable link. They'll know where you are and when to expect you back.
+                    </p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3 class="step-title">Check In Safe</h3>
+                    <p class="step-description">
+                        When you return, check in with one click. If you're overdue, we automatically alert your emergency contacts with all trip details.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Land Acknowledgment -->
+    <section class="land-acknowledgment">
+        <div class="acknowledgment-content">
+            <h2 class="acknowledgment-title">Land Acknowledgment</h2>
+            <p class="acknowledgment-text">
+                We acknowledge that the territories where NorthernGuardian operates are the traditional lands of indigenous peoples across Canada's North, including the Dene, Inuit, Métis, Gwich'in, Inuvialuit, and many other nations who have lived on and cared for these lands since time immemorial. We are committed to building technology that respects indigenous sovereignty, honors traditional knowledge, and supports the self-determination of northern communities.
+            </p>
+            <a href="#" class="acknowledgment-link">Learn More About Our Commitment →</a>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="cta-content">
+            <h2 class="cta-title">Ready to Explore Safely?</h2>
+            <p class="cta-subtitle">
+                Join hundreds of northern adventurers who trust NorthernGuardian to keep them safe
+            </p>
+            <a href="#" class="btn btn-primary" style="font-size: 1.25rem; padding: 1.25rem 3rem;">Create Your First Trip →</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>NorthernGuardian</h3>
+                <p style="line-height: 1.7;">
+                    Outdoor trip planning and safety for Canada's northern territories. Free for individuals, forever.
+                </p>
+            </div>
+            <div class="footer-section">
+                <h3>Product</h3>
+                <ul class="footer-links">
+                    <li><a href="#">Features</a></li>
+                    <li><a href="#">How It Works</a></li>
+                    <li><a href="#">Community Tier</a></li>
+                    <li><a href="#">Roadmap</a></li>
+                    <li><a href="#">Pricing</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Resources</h3>
+                <ul class="footer-links">
+                    <li><a href="#">Help Center</a></li>
+                    <li><a href="#">Safety Tips</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">Indigenous Partnerships</a></li>
+                    <li><a href="#">API Docs</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Company</h3>
+                <ul class="footer-links">
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Contact</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                    <li><a href="#">Land Acknowledgment</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 NorthernGuardian. Built with ❤️ in the North. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="auroraGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#00FFA3;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#7ED7C1;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#A8D8EA;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="shieldGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#4A90A4;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1E3A5F;stop-opacity:1" />
+    </linearGradient>
+    <filter id="mountainShadow">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="2"/>
+      <feOffset dx="0" dy="2" result="offsetblur"/>
+      <feComponentTransfer>
+        <feFuncA type="linear" slope="0.3"/>
+      </feComponentTransfer>
+      <feMerge>
+        <feMergeNode/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Shield Background -->
+  <path d="M100 20 L160 40 L160 100 Q160 150 100 180 Q40 150 40 100 L40 40 Z"
+        fill="url(#shieldGradient)"
+        stroke="#0D1B2A"
+        stroke-width="2"/>
+
+  <!-- Mountain Peaks -->
+  <g filter="url(#mountainShadow)">
+    <path d="M60 120 L75 85 L90 105 L90 120 Z"
+          fill="#0D1B2A"
+          opacity="0.9"/>
+    <path d="M80 120 L100 60 L120 120 Z"
+          fill="#1E3A5F"/>
+    <path d="M110 120 L125 95 L140 120 Z"
+          fill="#0D1B2A"
+          opacity="0.9"/>
+  </g>
+
+  <!-- Aurora Accent -->
+  <path d="M60 85 L80 75 L100 70 L120 75 L140 85 L140 95 L60 95 Z"
+        fill="url(#auroraGradient)"
+        opacity="0.6"/>
+
+  <!-- Snow Caps -->
+  <path d="M100 60 L105 68 L95 68 Z" fill="#F8F9FA"/>
+  <path d="M75 85 L78 90 L72 90 Z" fill="#F8F9FA"/>
+  <path d="M125 95 L128 100 L122 100 Z" fill="#F8F9FA"/>
+
+  <!-- Compass Points -->
+  <circle cx="100" cy="45" r="3" fill="#00FFA3" opacity="0.8"/>
+  <circle cx="100" cy="135" r="2" fill="#00FFA3" opacity="0.5"/>
+  <circle cx="55" cy="90" r="2" fill="#00FFA3" opacity="0.5"/>
+  <circle cx="145" cy="90" r="2" fill="#00FFA3" opacity="0.5"/>
+</svg>

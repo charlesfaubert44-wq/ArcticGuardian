@@ -1,0 +1,52 @@
+<svg width="600" height="150" viewBox="0 0 600 150" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="textGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#00FFA3"/>
+      <stop offset="100%" style="stop-color:#7ED7C1"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Shield Icon (Simplified) -->
+  <path d="M75 30 L110 40 L110 80 Q110 105 75 120 Q40 105 40 80 L40 40 Z"
+        fill="#1E3A5F"
+        stroke="#00FFA3"
+        stroke-width="2"/>
+
+  <!-- Mountain Silhouette -->
+  <path d="M55 95 L65 70 L75 85 L85 65 L95 95 Z"
+        fill="#0D1B2A"/>
+
+  <!-- Aurora Accent -->
+  <path d="M55 75 L75 70 L95 75 L95 82 L55 82 Z"
+        fill="url(#textGradient)"
+        opacity="0.6"/>
+
+  <!-- Brand Name -->
+  <text x="130" y="75"
+        font-family="'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif"
+        font-size="48"
+        font-weight="800"
+        fill="#0D1B2A"
+        letter-spacing="-1">
+    ARCTIC
+  </text>
+
+  <text x="130" y="110"
+        font-family="'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif"
+        font-size="48"
+        font-weight="800"
+        fill="url(#textGradient)"
+        letter-spacing="-1">
+    GUARDIAN
+  </text>
+
+  <!-- Tagline -->
+  <text x="132" y="130"
+        font-family="'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif"
+        font-size="14"
+        font-weight="500"
+        fill="#6C7A89"
+        letter-spacing="2">
+    SAFETY FOR REMOTE ADVENTURES
+  </text>
+</svg>

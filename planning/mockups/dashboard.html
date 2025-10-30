@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - NorthernGuardian</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --aurora-green: #00FFA3;
+            --aurora-teal: #7ED7C1;
+            --ice-blue: #A8D8EA;
+            --deep-blue: #4A90A4;
+            --midnight-dark: #0D1B2A;
+            --midnight-blue: #1E3A5F;
+            --slate-gray: #6C7A89;
+            --snow-white: #F8F9FA;
+            --off-white: #E8ECEF;
+            --earth-orange: #D4745F;
+            --forest-green: #2D5016;
+            --status-active: #4A90A4;
+            --status-upcoming: #2D5016;
+            --status-overdue: #DC2626;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--off-white);
+            color: var(--midnight-dark);
+        }
+
+        /* Top Navigation */
+        .top-nav {
+            background: white;
+            border-bottom: 1px solid var(--off-white);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--midnight-dark);
+        }
+
+        .logo-icon {
+            font-size: 2rem;
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .btn {
+            padding: 0.75rem 1.75rem;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            cursor: pointer;
+            border: none;
+            font-size: 0.95rem;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--aurora-green), var(--aurora-teal));
+            color: var(--midnight-dark);
+            box-shadow: 0 4px 20px rgba(0, 255, 163, 0.25);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 30px rgba(0, 255, 163, 0.35);
+        }
+
+        .user-menu {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            background: var(--off-white);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .user-menu:hover {
+            background: var(--ice-blue);
+        }
+
+        .user-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--deep-blue), var(--midnight-blue));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+
+        .user-name {
+            font-weight: 600;
+            color: var(--midnight-dark);
+        }
+
+        /* Main Layout */
+        .dashboard-container {
+            max-width: 1600px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+
+        /* Welcome Section */
+        .welcome-section {
+            margin-bottom: 3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+        }
+
+        .welcome-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--midnight-dark);
+        }
+
+        .welcome-wave {
+            display: inline-block;
+            animation: wave 2s ease-in-out infinite;
+        }
+
+        @keyframes wave {
+            0%, 100% { transform: rotate(0deg); }
+            25% { transform: rotate(20deg); }
+            75% { transform: rotate(-20deg); }
+        }
+
+        /* Section Headers */
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--midnight-dark);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .status-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        .status-active {
+            background: var(--status-active);
+        }
+
+        .status-upcoming {
+            background: var(--status-upcoming);
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.7; transform: scale(1.1); }
+        }
+
+        .view-all-link {
+            color: var(--deep-blue);
+            font-weight: 600;
+            text-decoration: none;
+            transition: color 0.3s ease;
+            font-size: 0.95rem;
+        }
+
+        .view-all-link:hover {
+            color: var(--aurora-teal);
+        }
+
+        /* Trip Cards */
+        .trips-section {
+            margin-bottom: 4rem;
+        }
+
+        .trips-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+            gap: 2rem;
+        }
+
+        .trip-card {
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            border: 1px solid var(--off-white);
+        }
+
+        .trip-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
+        }
+
+        .trip-map {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, var(--deep-blue), var(--ice-blue));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .trip-map::before {
+            content: '🗺️';
+            font-size: 5rem;
+            opacity: 0.3;
+        }
+
+        .status-badge {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-weight: 700;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            backdrop-filter: blur(10px);
+        }
+
+        .badge-active {
+            background: rgba(74, 144, 164, 0.9);
+            color: white;
+            animation: pulse-badge 2s ease-in-out infinite;
+        }
+
+        .badge-upcoming {
+            background: rgba(45, 80, 22, 0.9);
+            color: white;
+        }
+
+        .badge-overdue {
+            background: rgba(220, 38, 38, 0.9);
+            color: white;
+            animation: pulse-badge 1s ease-in-out infinite;
+        }
+
+        @keyframes pulse-badge {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.8; }
+        }
+
+        .trip-content {
+            padding: 1.5rem;
+        }
+
+        .trip-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--midnight-dark);
+            margin-bottom: 0.75rem;
+        }
+
+        .trip-meta {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            margin-bottom: 1.25rem;
+        }
+
+        .trip-meta-row {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--slate-gray);
+            font-size: 0.9rem;
+        }
+
+        .trip-meta-icon {
+            font-size: 1rem;
+        }
+
+        .countdown {
+            background: var(--off-white);
+            padding: 1rem;
+            border-radius: 10px;
+            margin-bottom: 1.25rem;
+            text-align: center;
+        }
+
+        .countdown-label {
+            font-size: 0.85rem;
+            color: var(--slate-gray);
+            margin-bottom: 0.25rem;
+        }
+
+        .countdown-time {
+            font-size: 1.75rem;
+            font-weight: 800;
+            color: var(--status-active);
+        }
+
+        .trip-actions {
+            display: flex;
+            gap: 0.75rem;
+        }
+
+        .btn-small {
+            padding: 0.5rem 1rem;
+            font-size: 0.85rem;
+            flex: 1;
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--deep-blue);
+            border: 1.5px solid var(--deep-blue);
+        }
+
+        .btn-outline:hover {
+            background: var(--deep-blue);
+            color: white;
+        }
+
+        .btn-check-in {
+            background: linear-gradient(135deg, var(--forest-green), var(--aurora-green));
+            color: white;
+            font-weight: 700;
+        }
+
+        /* Empty State */
+        .empty-state {
+            background: white;
+            border-radius: 16px;
+            padding: 4rem 2rem;
+            text-align: center;
+            border: 2px dashed var(--off-white);
+        }
+
+        .empty-icon {
+            font-size: 5rem;
+            margin-bottom: 1.5rem;
+            opacity: 0.3;
+        }
+
+        .empty-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--midnight-dark);
+            margin-bottom: 0.75rem;
+        }
+
+        .empty-description {
+            color: var(--slate-gray);
+            margin-bottom: 2rem;
+            font-size: 1.05rem;
+        }
+
+        /* Stats Cards */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .stat-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+        }
+
+        .stat-icon-active {
+            background: linear-gradient(135deg, rgba(74, 144, 164, 0.2), rgba(168, 216, 234, 0.2));
+        }
+
+        .stat-icon-total {
+            background: linear-gradient(135deg, rgba(0, 255, 163, 0.2), rgba(126, 215, 193, 0.2));
+        }
+
+        .stat-content {
+            flex: 1;
+        }
+
+        .stat-value {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--midnight-dark);
+        }
+
+        .stat-label {
+            color: var(--slate-gray);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .dashboard-container {
+                padding: 1.5rem 1rem;
+            }
+
+            .welcome-title {
+                font-size: 1.75rem;
+            }
+
+            .trips-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-actions {
+                flex-wrap: wrap;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Top Navigation -->
+    <nav class="top-nav">
+        <div class="logo">
+            <span class="logo-icon">🏔️</span>
+            <span>NorthernGuardian</span>
+        </div>
+        <div class="nav-actions">
+            <a href="#" class="btn btn-primary">
+                <span>+</span>
+                <span>Create New Trip</span>
+            </a>
+            <div class="user-menu">
+                <div class="user-avatar">SC</div>
+                <span class="user-name">Sarah Chen</span>
+                <span>▼</span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Dashboard Container -->
+    <div class="dashboard-container">
+        <!-- Welcome Section -->
+        <div class="welcome-section">
+            <h1 class="welcome-title">Welcome back, Sarah! <span class="welcome-wave">👋</span></h1>
+        </div>
+
+        <!-- Stats -->
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-icon stat-icon-active">🔵</div>
+                <div class="stat-content">
+                    <div class="stat-value">1</div>
+                    <div class="stat-label">Active Trip</div>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon stat-icon-total">🗺️</div>
+                <div class="stat-content">
+                    <div class="stat-value">5</div>
+                    <div class="stat-label">Total Trips</div>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon stat-icon-total">✉️</div>
+                <div class="stat-content">
+                    <div class="stat-value">12</div>
+                    <div class="stat-label">People Notified</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Active Trips -->
+        <div class="trips-section">
+            <div class="section-header">
+                <h2 class="section-title">
+                    <span class="status-dot status-active"></span>
+                    Active Trips (1)
+                </h2>
+            </div>
+            <div class="trips-grid">
+                <div class="trip-card">
+                    <div class="trip-map">
+                        <span class="status-badge badge-active">Active</span>
+                    </div>
+                    <div class="trip-content">
+                        <h3 class="trip-title">Great Slave Lake Fishing Trip</h3>
+                        <div class="trip-meta">
+                            <div class="trip-meta-row">
+                                <span class="trip-meta-icon">🎣</span>
+                                <span>Fishing</span>
+                            </div>
+                            <div class="trip-meta-row">
+                                <span class="trip-meta-icon">📅</span>
+                                <span>Nov 15, 8:00 AM - Nov 17, 6:00 PM</span>
+                            </div>
+                            <div class="trip-meta-row">
+                                <span class="trip-meta-icon">👥</span>
+                                <span>3 people • 47.3 km</span>
+                            </div>
+                        </div>
+                        <div class="countdown">
+                            <div class="countdown-label">Expected back in</div>
+                            <div class="countdown-time">22 hours</div>
+                        </div>
+                        <div class="trip-actions">
+                            <button class="btn btn-small btn-outline">View Details</button>
+                            <button class="btn btn-small btn-check-in">✓ Check In</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Upcoming Trips -->
+        <div class="trips-section">
+            <div class="section-header">
+                <h2 class="section-title">
+                    <span class="status-dot status-upcoming"></span>
+                    Upcoming Trips (3)
+                </h2>
+                <a href="#" class="view-all-link">View All →</a>
+            </div>
+            <div class="trips-grid">
+                <div class="trip-card">
+                    <div class="trip-map">
+                        <span class="status-badge badge-upcoming">Upcoming</span>
+                    </div>
+                    <div class="trip-content">
+                        <h3 class="trip-title">Hidden Lake Trail</h3>
+                        <div class="trip-meta">
+                            <div class="trip-meta-row">
+                                <span class="trip-meta-icon">🥾</span>
+                                <span>Hiking</span>
+                            </div>
+                            <div class="trip-meta-row">
+                                <span class="trip-meta-icon">📅</span>
+                                <span>Nov 5, 10:00 AM - 6:00 PM</span>
+                            </div>
+                            <div class="trip-meta-row">
+                                <span class="trip-meta-icon">👥</span>
+                                <span>2 people • 15.2 km</span>
+                            </div>
+                        </div>
+                        <div class="trip-actions">
+                            <button class="btn btn-small btn-outline">View</button>
+                            <button class="btn btn-small btn-outline">Edit</button>
+                            <button class="btn btn-small btn-primary">Share</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="trip-card">
+                    <div class="trip-map">
+                        <span class="status-badge badge-upcoming">Upcoming</span>
+                    </div>
+                    <div class="trip-content">
+                        <h3 class="trip-title">Ingraham Trail Loop</h3>
+                        <div class="trip-meta">
+                            <div class="trip-meta-row">
+                                <span class="trip-meta-icon">🥾</span>
+                                <span>Hiking</span>
+                            </div>
+                            <div class="trip-meta-row">
+                                <span class="trip-meta-icon">📅</span>
+                                <span>Nov 12, 9:00 AM - 5:00 PM</span>
+                            </div>
+                            <div class="trip-meta-row">
+                                <span class="trip-meta-icon">👥</span>
+                                <span>4 people • 22.8 km</span>
+                            </div>
+                        </div>
+                        <div class="trip-actions">
+                            <button class="btn btn-small btn-outline">View</button>
+                            <button class="btn btn-small btn-outline">Edit</button>
+                            <button class="btn btn-small btn-primary">Share</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="trip-card">
+                    <div class="trip-map">
+                        <span class="status-badge badge-upcoming">Upcoming</span>
+                    </div>
+                    <div class="trip-content">
+                        <h3 class="trip-title">Blachford Lake Ice Fishing</h3>
+                        <div class="trip-meta">
+                            <div class="trip-meta-row">
+                                <span class="trip-meta-icon">🎣</span>
+                                <span>Fishing</span>
+                            </div>
+                            <div class="trip-meta-row">
+                                <span class="trip-meta-icon">📅</span>
+                                <span>Dec 1, 7:00 AM - Dec 3, 5:00 PM</span>
+                            </div>
+                            <div class="trip-meta-row">
+                                <span class="trip-meta-icon">👥</span>
+                                <span>2 people • 85.0 km</span>
+                            </div>
+                        </div>
+                        <div class="trip-actions">
+                            <button class="btn btn-small btn-outline">View</button>
+                            <button class="btn btn-small btn-outline">Edit</button>
+                            <button class="btn btn-small btn-primary">Share</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Past Trips -->
+        <div class="trips-section">
+            <div class="section-header">
+                <h2 class="section-title">
+                    Past Trips (12)
+                </h2>
+                <a href="#" class="view-all-link">View All →</a>
+            </div>
+            <div class="empty-state">
+                <div class="empty-icon">✓</div>
+                <h3 class="empty-title">12 Successful Adventures</h3>
+                <p class="empty-description">All your past trips completed safely</p>
+                <a href="#" class="btn btn-outline btn-small">View Trip History</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
